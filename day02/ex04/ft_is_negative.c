@@ -10,26 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <unistd.h>
-void ft_is_negative(int n);
 
+void	ft_is_negative(int n)
+{
+	char	answer_1;
+	char	answer_2;
 
-int main(void){
-	ft_is_negative(0);
-
-}
-
-void ft_is_negative(int n){
-	char answer_1;
 	answer_1 = 'N';
-	char answer_2;
 	answer_2 = 'P';
 	if (n >= 0)
 	{
 		write(1, &answer_2, 1);
-	}else if (n < 0){
+	}
+	else if (n < 0)
+	{
 		write(1, &answer_1, 1);
 	}
-	
 }

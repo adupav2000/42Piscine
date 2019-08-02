@@ -11,16 +11,16 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-void ft_print_combn(int n);
 
-int main(void){
-	ft_print_combn(32);
-}
-void ft_print_combn(int n){
+void 	ft_print_combn(int n);
+
+void 	ft_print_combn(int n)
+{
 	char virgule = ',';
 	char espace = ' ';
 	int i = 0;
-	int iRef, i2Ref;
+	int 	iRef
+	int 	i2Ref;
 	 while (i <= 9){
 	     int i2 = i + 1;
 	     while(i2 <= 9 ){
@@ -35,7 +35,3 @@ void ft_print_combn(int n){
 	     i++;
 	 }
 }
-
-
-
-
