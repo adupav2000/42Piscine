@@ -1,2 +1,2 @@
 #!/bin/sh
-ifconfig -u | grep ether | cut -c 8-24
+ifconfig -u | grep ether | sed 's/ether//' | tr -d '\t' | tr -d ' '
