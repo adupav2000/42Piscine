@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 10:53:38 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/02 11:07:51 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/03 14:53:28 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-
-void ft_ft(int *nbr);
-
-int main(void){
-	int a;
-	a = 22;
-	ft_ft(&a);
-	printf("%d\n", a);
-}
- void ft_ft(int *nbr){
+void	ft_ft(int *nbr)
+{
 	*nbr = 42;
- }
+}

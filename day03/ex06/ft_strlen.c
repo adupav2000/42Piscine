@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_ft.c                                   :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/02 11:08:35 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/03 15:00:43 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/02 12:27:35 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/03 19:22:47 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_ultimate_ft(int *********nbr)
+int	ft_strlen(char *str)
 {
-	*********nbr = 42;
+	int	length;
+
+	length = 0;
+	while (str[length] != 0)
+	{
+		length++;
+	}
+	return (length);
 }

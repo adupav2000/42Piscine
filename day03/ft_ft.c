@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_ft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/02 12:27:35 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/02 13:03:38 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/02 10:53:38 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/03 18:41:07 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
-int ft_strlen(char *str);
+void ft_ft(int *nbr);
 
 int main(void){
-	char *str;
-	str = "slkfh;ajf;sjfh";
-	int x = ft_strlen(str);	
-	printf("%d\n", x);
+	int a;
 
+	a = 22;
+	ft_ft(&a);
 }
 
-int ft_strlen(char *str){
-	int length;
-	length = 0;
-	while(str[length] != 0){
-		length++;
-	}
-	return length;
-}
+ void ft_ft(int *nbr){
+	*nbr = 42;
+ }
