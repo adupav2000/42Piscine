@@ -3,62 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_comb2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 18:10:05 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/01 22:45:38 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/04 12:54:06 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_print_comb2(void);
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
-int main(){
-	       ft_print_comb2();
-}      
+void	display(int nb)
+{
+	int	first;
+	int	second;
 
-void ft_print_comb2(void){
-    char virgule = ',';
-    char espace = ' ';
-    int i;
-	int i2;
-	int i3; 
-	int i4;
-	int iRef;
-	iRef = 57;
-	i = 48;
-   while(i <= 57){
-        i2 = i;
-	   	while(i2 <= 57){
-			i3 = i;
-			while(i3 <= 57){
-	          	i4 = i3 + 1;
-				while(i4 <= 57){
-					if(!(i == i3 && i2 == i4)){
-						write(1, &i, 1);
-	         	 		write(1, &i2, 1);
-	         	 		write(1, &espace, 1);
-						write(1, &i3, 1);
-						write(1, &i4, 1);
-						write(1, &virgule, 1);
-					}
-					i4++;
-				}
-					if(i4 > 57){
-						if(!(i == i3 && i2 == iRef)){
-				          write(1, &i, 1);
-				          write(1, &i2, 1);
-				          write(1, &espace, 1);
-				          write(1, &i3, 1);
-				          write(1, &iRef, 1);
-				          write(1, &virgule, 1);
-						 }
-				}
-				i3++;
-			}
-		  i2++;
-		    }
-		i++;
+	if (nb > 9)
+	{
+		first = nb / 10;
+		second = nb % 10;
+		ft_putchar(first + 48);
+		ft_putchar(second + 48);
 	}
-}               
+	else
+	{
+		ft_putchar('0');
+		ft_putchar(nb + 48);
+	}
+}
+
+void	ft_print_comb2(void)
+{
+	int	i;
+	int	o;
+
+	i = 0;
+	while (i <= 99)
+	{
+		o = i + 1;
+		while (o <= 99)
+		{
+			display(i);
+			ft_putchar(' ');
+			display(o);
+			if (i < 98 || o < 99)
+			{
+				ft_putchar(',');
+				ft_putchar(' ');
+			}
+			++o;
+		}
+		++i;
+	}
+}

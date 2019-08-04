@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 17:13:47 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/01 18:40:45 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/04 13:46:17 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_print_alphabet(void)
+void	ft_print_reverse_alphabet(void)
 {
 	int	i;
 
