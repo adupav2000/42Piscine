@@ -20,11 +20,8 @@ int main(void)
 	int ex[11] = {1,2,3,4,5,6,7,8,9,2};
 		
 	ft_rev_int_tab(ex, 11);
-	for (int i = 1; i < 11; ++i)
-	{
-		printf("%d", ex[i]);	
-	}
-	
+	for (int i = 0; i < 11; i++)
+            printf("%d", &ex[i]);	
 	return 0;
 }
 
@@ -36,7 +33,7 @@ void ft_rev_int_tab(int *tab, int size)
 	int i;
 	
 	half_length = size / 2;
-	i = 1;
+	i = 0;
 	while(i <= half_length)
 	{
 		extract = tab[i];
