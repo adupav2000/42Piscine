@@ -1,34 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/04 19:36:52 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/04 20:53:01 by adu-pavi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <string.h>
 #include <stdio.h>
-
-char    *ft_strcpy(char *dest,char *src);
-
-
-
-int main(void){
-	char *src;
-	char *dest;
-	char *dest1;
-
-	src = "qwertyuiop";
-	dest = ft_strcpy(dest, src);
-	printf("%s\n", dest);
-	dest1 = strcpy(dest1, src);
-	printf("%s\n", dest1);
-}
-
 
 char	*ft_strcpy(char *dest, char *src)
 {
 	int i;
 
 	i = 0;
-    while (src[i])
-    {
-    	dest[i] = src[i];
-    	i++;
-    }
-    dest[i] = src[i];
-    return (dest);
+	while (src[i])
+	{
+		printf("%d\n", src[i]);
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = 0;
+	return (dest);
 }
