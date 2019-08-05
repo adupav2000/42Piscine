@@ -41,11 +41,10 @@ char *convert_dec_to_hex(int dec)
 
 	ret[0] = 92;
 	i = 1;
-	first = dec / 16;
-	last = dec % 16; /*last number after conversion to hex (if > 9)*/
-	last = convert_dec_to_hex_under_16(last);
-	
-	ret[++i] = 0;
+
+
+	last = convert_dec_to_hex_under_16(dec % 16);
+	first = convert_dec_to_hex_under_16(dec / 16);
 	return (ret);
 }
 
