@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 int ft_strlen(char *str)
 {
     int length;
@@ -26,14 +25,14 @@ int ft_strlen(char *str)
 int  ft_str_is_lowercase(char *str)
 {
     int i;
-    int ret = 0;
+    int ret = 1;
     i = 1;
     if(!ft_strlen(str))
        ret = 1; 
     while(str[i] != 0)
     {
         if(str[i] < 97 && str[i] > 122)
-            ret = 1;
+            ret = 0;
         i++;
     }
     return (ret);
