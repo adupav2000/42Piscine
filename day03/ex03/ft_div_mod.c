@@ -6,12 +6,12 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 11:25:17 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/04 19:25:39 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/05 11:44:18 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_div_mod(int a, int b, int *div, int *mod)
 {
-	*mod = a / b;
-	*div = a % b;
+	*div = a / b;
+	*mod = a % b;
 }

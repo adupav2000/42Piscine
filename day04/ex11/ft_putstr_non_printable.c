@@ -15,57 +15,59 @@ int is_printable(char x)
     }
 }
 
+char convert_dec_to_hex_under_16(int ref)
+{
+	char ret;
+
+	if (ref < 10)
+	{
+		ret = ref + 48;
+		return (ret);
+	}
+	else 
+	{
+		ret = ref + 65;
+		return (ret);
+	}
+	return (0);
+}
+
 char *convert_dec_to_hex(int dec)
 {
 	int first;
-	int second; 
-	char *ret;
-	ret = "  ";
+	int last; 
+	char ret[4];
+	int i;
 
+	ret[0] = 92;
+	i = 1;
+	first = dec / 16;
+	last = dec % 16; /*last number after conversion to hex (if > 9)*/
+	last = convert_dec_to_hex_under_16(last);
 	
-	first = dec / 13;
-	second = dec % 13;
-	if (first < 10)
-	{
-		first = first + 48;
-	}
-	else 
-	{
-		first = first + 65;
-	}
-	if (second < 10)
-	{
-		second = second + 48;
-	}
-	else 
-	{
-		second = second + 65;
-	}
-	ret[0] = first;
-	ret[1] = second;
+	ret[++i] = 0;
 	return (ret);
-	
 }
 
-// void ft_putstr_non_printable(char *str){
-// 	int i;
-// 	char not_printable;
+void ft_putstr_non_printable(char *str){
+	int i;
+	char *not_printable;
 
-// 	i = 0;
-// 	while (str[i])	
-// 	{
-// 		if(!is_printable(str[i]))
-// 		{
-// 			not_printable = &str[i];
-// 			write(1, , 1);
-// 			not_printable = &str[i];
-// 		}	
-// 		else
-// 		{
-// 			write(1, &str[i], 1);		
-// 		}
-// 	}
-// }
+	i = 0;
+	while (str[i])	
+	{
+		if(!is_printable(str[i]))
+		{
+			char *convert_dec_to_hex(&str[i]);
+			write(1, , 4);
+			
+		}	
+		else
+		{
+			write(1, &str[i], 1);		
+		}
+	}
+}
 
 int main(void)
 {

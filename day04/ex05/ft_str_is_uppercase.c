@@ -3,16 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 19:37:46 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/04 19:37:48 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/05 13:22:16 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
-int ft_str_is_uppercase(char *str);
-
 
 int ft_strlen(char *str)
 {
@@ -40,10 +36,4 @@ int ft_str_is_uppercase(char *str)
         i++;
     }
     return (ret);
-}
-
-int main()
-{
-        
-    return 0;
 }

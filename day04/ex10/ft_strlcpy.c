@@ -1,12 +1,18 @@
-#include <stdio.h>
-#include <unistd.h>
-
-
-unsigned int ft_strlcpy(char *dest, char *src, unsigned intsize);
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/05 20:54:40 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/05 20:59:33 by adu-pavi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 int	ft_strlen(char *str)
 {
-	int	length;
+	unsigned long length;
 
 	length = 0;
 	while (str[length] != 0)
@@ -16,75 +22,32 @@ int	ft_strlen(char *str)
 	return (length);
 }
 
-
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
 	unsigned int i;
 
 	i = 0;
-    while (i <= n)
-    {
-    	dest[i] = src[i];
-    	i++;
-    }
-    dest[i] = src[i];
-    return (dest);
-}
-
-void	ft_putnbr1(int nb)
-{
-	int		divider;
-	int		extract;
-	int		check;
-	char	dec_val;
-
-	check = 0;
-	divider = 1000000000;
-	while (divider >= 1)
+	while (i <= n)
 	{
-		extract = nb / divider;
-		nb = nb - extract * divider;
-		if (extract > 0 || check == 1)
-		{
-			check = 1;
-			dec_val = extract + 48;
-			write(1, &dec_val, 1);
-		}
-		divider = divider / 10;
+		dest[i] = src[i];
+		i++;
 	}
+	dest[i] = src[i];
+	return (dest);
 }
 
-void	ft_putnbr(int nb)
+unsigned	int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	if (nb == -2147483648)
+	unsigned int i;
+
+	i = -1;
+	while (++i < (size - 1) && src[++i])
 	{
-		write(1, &"-2147483648", 11);
+		dest[i] = src[i];
 	}
-	else
+	while (dest[++i])
 	{
-		if (nb < 0)
-		{
-			write(1, &"-", 1);
-			nb = nb * -1;
-		}
-		ft_putnbr1(nb);
+		dest[i] = 0;
 	}
-}
-
-int main(void)
-{
-	char *dest;
-	char *src;
-
-	dest = "";
-	src = "'jhgvkkvgkgv";
-
-	ft_putnbr(ft_strlcpy(dest, src, 3));
-	return 0;
-}
-
-unsigned int ft_strlcpy(char *dest, char *src, unsigned int size)
-{
-	ft_strncpy(dest, src, size);
 	return (ft_strlen(src));
 }

@@ -3,15 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 19:38:09 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/04 19:38:11 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/05 13:28:27 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-char *ft_strupcase(char *str);
 
+void to_upper_case(char *c)
+{
+	*c = *c - 32;
+}
+
+int is_min_char(char c)
+{
+	if (c < 123 && c > 96)
+	{
+		return (1);
+	}
+	else 
+	{
+		return (0);
+	}
+}
 
 char *ft_strupcase(char *str)
 {
@@ -20,11 +34,10 @@ char *ft_strupcase(char *str)
 	i = 0;
 	while(str[i] != '\0')
 	{
-		printf("%c\n", str[i]);
-		if (str[i] < 123 && str[i] > 96){
-			str[i] = str[i] - ('a' - 'A');
+		if (is_min_char(str[i]))
+		{
+			to_upper_case(&str[i]);
 		}
-		printf("%c\n", str[i]);
 		i++;
 	}
 	return str;
@@ -32,8 +45,7 @@ char *ft_strupcase(char *str)
 
 int main()
 {
-	char *str;
-	str = "azertyuiofff U 4567890p";
-	ft_strupcase(str);
+	char str[] = "azertyuiofff U 4567890p";
+	printf("%s\n", ft_strupcase(str));
 	return 0;
 }

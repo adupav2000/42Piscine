@@ -3,21 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 19:38:24 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/04 19:38:26 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/05 13:32:59 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strlowcase(char *str);
+void to_lower_case(char *c)
+{
+	*c = *c + 32;
+}
 
+int is_maj_char(char c)
+{
+	if (c < 91 && c > 64)
+	{
+		return (1);
+	}
+	else 
+	{
+		return (0);
+	}
+}
 
 char *ft_strlowcase(char *str)
 {
-	while(str[i])
+	int i;
+
+	i = 0;
+	while(str[i] != '\0')
 	{
-		str[i] = str[i] + 32;
+		if (is_maj_char(str[i]))
+		{
+			to_lower_case(&str[i]);
+		}
+		i++;
 	}
 	return str;
 }

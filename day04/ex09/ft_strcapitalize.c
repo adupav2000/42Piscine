@@ -1,49 +1,72 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/05 15:51:31 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/05 16:57:49 by adu-pavi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-
-char *ft_strcapitalize(char *str);
-
-
-int main(void)
+int	is_printable(char x)
 {
-	char *str1;
-	char *str;
-	str1 = "je Mappelle alAin m6ais ou 5sont les +majuscules";
-	str = ft_strcapitalize(str1);
-	int i = 1;
-	while(str1[i])
+	if (x > 126 || x < 33)
 	{
-		printf("%c", str1[i]);
-		i++;
+		return (0);
+	}
+	else
+	{
+		return (1);
 	}
 }
 
-int is_printable(char x)
+int	is_sign(char c)
 {
-    if (x > 126 || x < 32)
-    {
-        return (0);
-    }
-    else
-    {
-        return (1);
-    }
+	if ((c > 32 && c < 48) || (c > 57 && c < 65) || (c > 90 && c < 97))
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
 }
 
-
-
-char *ft_strcapitalize(char *str)
+void	to_lower_case(char *c)
 {
-	int i;
+	*c = *c + 32;
+}
 
-	i = 0;
-	while(str[i + 1])
+void	to_upper_case(char *c)
+{
+	*c = *c - 32;
+}
+
+char	*ft_strcapitalize(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
 	{
-		if(is_printable(str[i]) && str[i + 1] <= 122 && str[i + 1] >= 97)
+		if (str[i] < 91 && str[i] > 64)
+			to_lower_case(&str[i]);
+		if (i != 0)
 		{
-			str[i + 1] = str[i + 1] - 32; 
+			if ((!is_printable(str[i - 1])
+				|| is_sign(str[i - 1]))
+				&& !(str[i - 1] < 47 && str[i - 1] > 56))
+			{
+				if (str[i] < 123 && str[i] > 96)
+					to_upper_case(&str[i]);
+			}
 		}
-		i++;
+		else
+		{
+			to_upper_case(&str[i]);
+		}
 	}
-	return str;
+	return (str);
 }
