@@ -1,25 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/04 19:36:52 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/06 20:26:55 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/06 17:26:59 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/06 20:26:35 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+int				ft_strlen(char *str)
 {
-	int i;
+	int	length;
 
-	i = 0;
-	while (src[i])
+	length = 0;
+	while (str[length] != 0)
 	{
-		dest[i] = src[i];
+		length++;
+	}
+	return (length);
+}
+
+unsigned	int	ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	int i_max;
+	int i;
+	int ret;
+	int s;
+
+	i_max = size - ft_strlen(dest);
+	i = 0;
+	ret = ft_strlen(dest) + ft_strlen(src) - 1;
+	while (src[i] && i < i_max)
+	{
+		s = ft_strlen(dest) + 1;
+		dest[s] = src[i];
 		i++;
 	}
-	dest[i] = 0;
-	return (dest);
+	return (ret);
 }

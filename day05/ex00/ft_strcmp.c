@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/04 19:36:52 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/06 20:26:55 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/06 11:33:43 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/06 11:35:15 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int i;
 
 	i = 0;
-	while (src[i])
+	while (s2[i] && s1[i])
 	{
-		dest[i] = src[i];
+		if ((s1[i] - s2[i]))
+		{
+			return (s1[i] - s2[i]);
+		}
 		i++;
 	}
-	dest[i] = 0;
-	return (dest);
+	return (0);
 }

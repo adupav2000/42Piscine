@@ -1,25 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/04 19:36:52 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/06 20:26:55 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/06 15:06:55 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/06 15:21:05 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+int	ft_strlen(char *str)
 {
-	int i;
+	int	length;
 
-	i = 0;
-	while (src[i])
+	length = 0;
+	while (str[length] != 0)
 	{
-		dest[i] = src[i];
-		i++;
+		length++;
 	}
-	dest[i] = 0;
-	return (dest);
+	return (length);
+}
+
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
+{
+	int					i;
+	unsigned int		i2;
+	char				*ret;
+
+	ret = dest;
+	i2 = 0;
+	i = ft_strlen(ret);
+	while (src[i2] && i2 <= nb)
+	{
+		ret[i] = src[i2];
+		i++;
+		i2++;
+	}
+	i--;
+	while (ret[++i])
+	{
+		ret[i] = '\0';
+	}
+	return (ret);
 }
