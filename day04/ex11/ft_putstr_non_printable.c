@@ -1,7 +1,4 @@
-
 #include <unistd.h>
-#include <stdio.h>
-void ft_putstr_non_printable(char *str);
 
 int is_printable(char x)
 {
@@ -26,53 +23,33 @@ char convert_dec_to_hex_under_16(int ref)
 	}
 	else 
 	{
-		ret = ref + 65;
+		ret = ref + 87;
 		return (ret);
 	}
 	return (0);
 }
 
-char *convert_dec_to_hex(int dec)
-{
-	int first;
-	int last; 
-	char ret[4];
-	int i;
-
-	ret[0] = 92;
-	i = 1;
-
-
-	last = convert_dec_to_hex_under_16(dec % 16);
-	first = convert_dec_to_hex_under_16(dec / 16);
-	return (ret);
-}
-
 void ft_putstr_non_printable(char *str){
 	int i;
-	char *not_printable;
+	char not_printable;
 
 	i = 0;
 	while (str[i])	
 	{
 		if(!is_printable(str[i]))
-		{
-			char *convert_dec_to_hex(&str[i]);
-			write(1, , 4);
-			
+		{ 
+			not_printable = 92;
+			write(1, &not_printable, 1);
+			not_printable = convert_dec_to_hex_under_16(str[i] / 16);
+			write(1, &not_printable, 1);
+			not_printable = convert_dec_to_hex_under_16(str[i] % 16);
+			write(1, &not_printable, 1);
+			write(1, 0, 1);
 		}	
 		else
 		{
 			write(1, &str[i], 1);		
 		}
+		i++;
 	}
-}
-
-int main(void)
-{
-	char *str;
-	str = "azertyuio";
-	printf("%s\n", convert_dec_to_hex(36));
-	ft_putstr_non_printable(str);
-	return 0;
 }
