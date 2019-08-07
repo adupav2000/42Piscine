@@ -1,25 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/04 19:36:52 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/06 20:26:55 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/06 11:50:00 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/06 15:10:47 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+int	ft_strlen(char *str)
 {
-	int i;
+	int	length;
 
-	i = 0;
-	while (src[i])
+	length = 0;
+	while (str[length] != 0)
 	{
-		dest[i] = src[i];
+		length++;
+	}
+	return (length);
+}
+
+char	*ft_strcat(char *dest, char *src)
+{
+	int		i;
+	int		i2;
+	char	*ret;
+
+	ret = dest;
+	i2 = -1;
+	i = ft_strlen(ret);
+	while (src[++i2])
+	{
+		ret[i] = src[i2];
 		i++;
 	}
-	dest[i] = 0;
-	return (dest);
+	i--;
+	while (ret[++i])
+	{
+		ret[i] = '\0';
+	}
+	return (ret);
 }

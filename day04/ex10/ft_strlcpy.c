@@ -6,13 +6,13 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 20:54:40 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/05 20:59:33 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/06 16:04:18 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+int				ft_strlen(char *str)
 {
-	unsigned long length;
+	unsigned long	length;
 
 	length = 0;
 	while (str[length] != 0)
@@ -22,9 +22,9 @@ int	ft_strlen(char *str)
 	return (length);
 }
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+char			*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (i <= n)
@@ -36,9 +36,9 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	return (dest);
 }
 
-unsigned	int	ft_strlcpy(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = -1;
 	while (++i < (size - 1) && src[++i])
