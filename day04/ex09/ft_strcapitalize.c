@@ -6,67 +6,48 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 15:51:31 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/05 16:57:49 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/08 13:06:55 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_printable(char x)
+char	*ft_strlowcase(char *str)
 {
-	if (x > 126 || x < 33)
-	{
-		return (0);
-	}
-	else
-	{
-		return (1);
-	}
-}
+	int i;
 
-int	is_sign(char c)
-{
-	if ((c > 32 && c < 48) || (c > 57 && c < 65) || (c > 90 && c < 97))
+	i = 0;
+	while (str[i])
 	{
-		return (1);
+		if (str[i] >= 'A' && str[i] <= 'Z')
+		{
+			str[i] = str[i] + 32;
+		}
+		i++;
 	}
-	else
-	{
-		return (0);
-	}
-}
-
-void	to_lower_case(char *c)
-{
-	*c = *c + 32;
-}
-
-void	to_upper_case(char *c)
-{
-	*c = *c - 32;
+	return (str);
 }
 
 char	*ft_strcapitalize(char *str)
 {
-	int	i;
+	int i;
 
-	i = -1;
-	while (str[++i])
+	ft_strlowcase(str);
+	i = 0;
+	while (str[i])
 	{
-		if (str[i] < 91 && str[i] > 64)
-			to_lower_case(&str[i]);
-		if (i != 0)
+		if (str[i] >= 'a' && str[i] <= 'z')
 		{
-			if ((!is_printable(str[i - 1])
-				|| is_sign(str[i - 1]))
-				&& !(str[i - 1] < 47 && str[i - 1] > 56))
+			if (!(str[i - 1] >= 'A' && str[i - 1] <= 'Z'))
 			{
-				if (str[i] < 123 && str[i] > 96)
-					to_upper_case(&str[i]);
+				if (!(str[i - 1] >= 'a' && str[i - 1] <= 'z'))
+				{
+					if (!(str[i - 1] >= '0' && str[i - 1] <= '9'))
+					{
+						str[i] = str[i] - 32;
+					}
+				}
 			}
 		}
-		else
-		{
-			to_upper_case(&str[i]);
-		}
+		i++;
 	}
 	return (str);
 }

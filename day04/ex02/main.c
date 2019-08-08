@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncp.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/04 19:37:08 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/04 21:26:18 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/07 15:36:37 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/07 16:10:57 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdio.h>
+#include <string.h>
+#include "ft_str_is_alpha.c"
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int main()
 {
-	unsigned int i;
+	char *x = "Asxx6ie";
+	// char y[12] = "France";
+	printf("%d\n", ft_str_is_alpha(x));
 
-	i = 0;
-	while (i <= n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = src[i];
-	return (dest);
+
+
+
 }

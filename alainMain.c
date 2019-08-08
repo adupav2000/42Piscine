@@ -8,7 +8,7 @@ int main()//ft_strncat.c
 
 int main()//ft_strstr.c
 {
-	char i[23] = "qwertyuiop[";		
+	char i[23] = "qwertyuiop[";
 	char i2[13] = "tyu";		
 	printf("%c\n", *ft_strstr(i, i2));
 	printf("%c\n", *strstr(i, i2));
