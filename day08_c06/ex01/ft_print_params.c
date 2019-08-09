@@ -1,26 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/09 00:57:35 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/09 14:16:47 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/09 16:25:11 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/09 16:29:58 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 
-int ft_iterative_factorial(int nb)
+void	ft_putchar(char c)
 {
-	int res;
-
-	res = 1;
-	if (nb < 0)
-		return (0);
-	if (nb == 0)
-		return (1);
-	while (--nb)
-		res *= nb;
-	return res;		
+	write(1, &c, 1);
 }
+
+void	ft_putstr(char *str)
+{
+	int length;
+
+	length = 0;
+	while (str[length] != 0)
+	{
+		ft_putchar(str[length]);
+		length++;
+	}
+}
+
+int main(int argc, char *argv[])
+{
+	int i;
+
+	i = 1;
+	while (argv[i])
+	{
+		ft_putstr(argv[i]);
+		ft_putchar('\n');
+		i++;
+	}
+	return 0;
+}
+

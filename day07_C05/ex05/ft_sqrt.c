@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/09 00:57:35 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/09 14:16:47 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/09 12:02:34 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/09 15:12:14 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-int ft_iterative_factorial(int nb)
+int ft_sqrt(int nb)
 {
-	int res;
+	int test_num;
 
-	res = 1;
-	if (nb < 0)
+	if (nb <= 0)
 		return (0);
-	if (nb == 0)
-		return (1);
-	while (--nb)
-		res *= nb;
-	return res;		
+	test_num = 0;
+	while (test_num <= 46340)
+	{
+		if ((test_num * test_num) == nb)
+			return (test_num);
+		test_num++;
+	}
+	return 0;
 }

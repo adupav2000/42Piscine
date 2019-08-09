@@ -6,7 +6,7 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 00:07:46 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/09 00:11:32 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/09 15:53:37 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,24 @@ int	check_base(char *base)
 	}
 	return (1);
 }
+
+int	is_white_space(char x)
+{
+	if (x == '\t')
+		return (1);
+	if (x == '\n')
+		return (1);
+	if (x == '\v')
+		return (1);
+	if (x == '\f')
+		return (1);
+	if (x == '\r')
+		return (1);
+	if (x == ' ')
+		return (1);
+	return (0);
+}
+
 
 int	ft_atoi_base(char *str, char *base)
 {
