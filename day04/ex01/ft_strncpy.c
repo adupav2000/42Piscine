@@ -6,7 +6,7 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 19:37:08 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/08 22:26:37 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/10 19:59:11 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 		i++;
 	}
 	while (i < n)
-		dest[i] = 0;
+		dest[i++] = 0;
 	return (dest);
 }
