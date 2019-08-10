@@ -6,7 +6,7 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 00:07:46 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/09 15:53:37 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/10 22:34:32 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,42 +46,65 @@ int	check_base(char *base)
 	return (1);
 }
 
-int	is_white_space(char x)
+int	is_in_base(char letter, char *base)
 {
-	if (x == '\t')
-		return (1);
-	if (x == '\n')
-		return (1);
-	if (x == '\v')
-		return (1);
-	if (x == '\f')
-		return (1);
-	if (x == '\r')
-		return (1);
-	if (x == ' ')
-		return (1);
+	int i;
+
+	i = 0;
+	while (base[i])
+	{
+		if (base[i] == letter)
+			return (1);
+		i++;
+	}
 	return (0);
 }
 
-
-int	ft_atoi_base(char *str, char *base)
+int	ft_atoi_base2(int status, char *str, char *base)
 {
 	int i1;
 	int i2;
 	int result;
 
-	i1 = 0;
 	result = 0;
-	if (check_base(base))
+	i1 = status;
+	while (str[i1])
 	{
-		while (str[i1])
-		{
-			i2 = 0;
-			while (!(str[i1] == base[i2]))
-				i2++;
-			result = (result * ft_strlen(base)) + i2;
-			i1++;
-		}
+		if (!is_in_base(str[i1], base))
+			return (0);
+		i2 = 0;
+		while (!(str[i1] == base[i2]))
+			i2++;
+		result = (result * ft_strlen(base)) + i2;
+		i1++;
 	}
 	return (result);
+}
+
+int	ft_atoi_base(char *str, char *base)
+{
+	int i1;
+	int result;
+	int pos;
+	int status;
+
+	i1 = 0;
+	result = 0;
+	pos = 1;
+	status = 0;
+	if (!check_base(base))
+		return (0);
+	while (str[i1] == '\t' || str[i1] == '\n' || str[i1] == '\v')
+		i1++;
+	while (str[i1] == '\r' || str[i1] == ' ' || str[i1] == '\f')
+		i1++;
+	while (str[i1] == '-' || str[i1] == '+')
+	{
+		if (str[i1] == '-')
+			pos *= -1;
+		status = i1 + 1;
+		i1++;
+	}
+	result = ft_atoi_base2(status, str, base);
+	return (result * pos);
 }
