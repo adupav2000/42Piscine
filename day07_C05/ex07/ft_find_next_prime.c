@@ -1,37 +1,50 @@
-<<<<<<< HEAD
-
-:q
-
-
-
-
-=======
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/09 12:02:34 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/09 15:12:14 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/09 12:31:30 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/09 12:42:40 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-int ft_sqrt(int nb)
+#include <stdio.h>
+int ft_is_prime(int nb)
 {
-	int test_num;
+	unsigned long int i[3];
 
-	if (nb <= 0)
+	
+	if (nb < 2)
 		return (0);
-	test_num = 0;
-	while (test_num <= 46340)
+	i[0] = 2;
+	while (i[0] <= nb)
 	{
-		if ((test_num * test_num) == nb)
-			return (test_num);
-		test_num++;
+		i[1] = 2;
+		while (i[1] <= nb)
+		{
+			if ((i[0] * i[1]) == nb)
+				return (0);
+			if ((i[0] * i[1]) > nb)
+				break;
+			i[1]++;
+		}
+		i[0]++;
 	}
+	return (1);
+}
+
+int ft_find_next_prime(int nb)
+{
+	while (!ft_is_prime(nb))
+		nb++;
+	return (nb);
+}
+
+int main()
+{
+	printf("%d\n", ft_find_next_prime(60));
 	return 0;
 }
->>>>>>> dacaadd73fe964216975c15eb96d7f93fd8e9833

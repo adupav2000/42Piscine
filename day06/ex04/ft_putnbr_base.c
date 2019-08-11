@@ -6,7 +6,7 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 23:43:57 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/08 23:48:33 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/09 15:45:58 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,14 @@ void	ft_putstr(char *str)
 void	ft_putnbr_base(int nbr, char *base)
 {
 	int		i[7];
-	char	str[256];
-	char	result[256];
+	char	str[700];
 
 	i[0] = 0;
 	i[2] = ft_strlen(base);
 	if (check_base(base))
 	{
+		if (nbr == 0)
+			write(1, base, 1);
 		i[1] = nbr < 0 ? 45 : 0;
 		while (nbr)
 		{

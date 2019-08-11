@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
-#include "ft_atoi_base.c"
+#include "ft_recursive_factorial.c"
 
 int main()
 {
 	// int nb = -2147483648;
-	char str1[] = " ---+5678EF";
-	char str[] = "0123456789ABCDEF";
+	// char str1[] = "127";
+	// char str[] = "0123456789ABCDEF";
 	// char x[] = "Alaind\x1\x5\x10\x15";
 	// char myCharValues[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,34,35,36,37,38,39,40,41,42,43,44,127};
 	// int myIntValues[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,34,35,36,37,38,39,40,41,42,43,44,127};
@@ -30,6 +30,12 @@ int main()
 	// printf("%d\n", check_base("0"));
 	// printf("%d\n", check_base("0123Q456789ABCDEF-"));
 	// printf("%d\n", check_base("0123QA456789ABCDE-F-"));
-	printf("%d\n", ft_atoi_base(str1, str));
+	int i = 0;
+	while (i <= 30)
+	{
+		printf("%d - %d\n", i,ft_recursive_factorial(i));
+		i++;
+	}
+	
 	return 0;
 }

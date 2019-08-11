@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/09 00:57:35 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/09 14:16:47 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/09 12:11:12 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/09 15:20:43 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-int ft_iterative_factorial(int nb)
+int ft_is_prime(int nb)
 {
-	int res;
+	long int i[3];
 
-	res = 1;
-	if (nb < 0)
+	i[0] = 2;
+	if (nb < 2)
 		return (0);
-	if (nb == 0)
-		return (1);
-	while (--nb)
-		res *= nb;
-	return res;		
+	while (i[0] <= nb)
+	{
+		i[1]= 2;
+		while (i[1] <= nb)
+		{
+			if ((i[0] * i[1]) == nb)
+				return (0);
+			if ((i[0] * i[1]) > nb)
+				break;
+			i[1]++;
+		}
+		i[0]++;
+	}
+	return (1);
 }

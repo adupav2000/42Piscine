@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   ft_ten_queens_puzzle.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/09 00:57:35 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/09 14:16:47 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/09 12:43:36 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/09 12:45:39 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-int ft_iterative_factorial(int nb)
+int map_reframe(int hrange, lrange)
 {
-	int res;
+	
+}
 
-	res = 1;
-	if (nb < 0)
-		return (0);
-	if (nb == 0)
-		return (1);
-	while (--nb)
-		res *= nb;
-	return res;		
+int ft_ten_queens_puzzle(void)
+{
+
 }
