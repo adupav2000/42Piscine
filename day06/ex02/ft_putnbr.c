@@ -6,52 +6,33 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 18:30:16 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/10 20:10:15 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/12 14:10:01 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putnbr1(int nb)
-{
-	int		divider;
-	int		extract;
-	int		check;
-	char	dec_val;
-
-	check = 0;
-	divider = 1000000000;
-	while (divider >= 1)
-	{
-		extract = nb / divider;
-		nb = nb - extract * divider;
-		if (extract > 0 || check == 1)
-		{
-			check = 1;
-			dec_val = extract + 48;
-			write(1, &dec_val, 1);
-		}
-		divider = divider / 10;
-	}
-}
-
 void	ft_putnbr(int nb)
 {
-	if (nb == -2147483648)
-	{
-		write(1, &"-2147483648", 11);
-	}
-	if (nb == 0)
-	{
+	char c;
+	long nb22;
+
+	nb22 = nb;
+	if (nb22 == 0)
 		write(1, &"0", 1);
-	}
-	else
+	if (nb22 < 0)
 	{
-		if (nb < 0)
-		{
-			write(1, &"-", 1);
-			nb = nb * -1;
-		}
-		ft_putnbr1(nb);
+		nb22 = nb22 * -1;
+		write(1, &"-", 1);
+	}
+	if (nb22 >= 10)
+	{
+		ft_putnbr(nb22 / 10);
+		ft_putnbr(nb22 % 10);
+	}
+	else if (nb22 != 0)
+	{
+		c = nb22 + 48;
+		write(1, &c, 1);
 	}
 }

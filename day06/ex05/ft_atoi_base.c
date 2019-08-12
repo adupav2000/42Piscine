@@ -6,7 +6,7 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 00:07:46 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/10 22:34:32 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/12 15:16:26 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ int	check_base(char *base)
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == '+' || base[i] == '-')
+		if (base[i] == '+' || base[i] == '-'
+			|| base[i] == '\t' || base[i] == '\n' || base[i] == '\v'
+			|| base[i] == '\r' || base[i] == ' ' || base[i] == '\f')
 			return (0);
 		j = 0;
 		while (base[j])

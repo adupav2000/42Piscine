@@ -6,7 +6,7 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 16:22:20 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/09 16:25:14 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/12 23:15:58 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ void	ft_putstr(char *str)
 	}
 }
 
-int main(int argc, char *argv[])
+int		main(int argc, char *argv[])
 {
-	ft_putstr(argv[0]);	
-	return 0;
+	(void)argc;
+	(void)argv;
+	ft_putstr(argv[0]);
+	write(1, &"\n", 1);
+	return (0);
 }

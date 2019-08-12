@@ -6,29 +6,21 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 12:11:12 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/09 15:20:43 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/12 20:07:02 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_is_prime(int nb)
+int	ft_is_prime(int nb)
 {
 	long int i[3];
 
-	i[0] = 2;
+	i[0] = 1;
 	if (nb < 2)
 		return (0);
-	while (i[0] <= nb)
+	while (i[0]++ <= nb / i[0])
 	{
-		i[1]= 2;
-		while (i[1] <= nb)
-		{
-			if ((i[0] * i[1]) == nb)
-				return (0);
-			if ((i[0] * i[1]) > nb)
-				break;
-			i[1]++;
-		}
-		i[0]++;
+		if (nb != i[0] && (nb % i[0]) == 0)
+			return (0);
 	}
 	return (1);
 }

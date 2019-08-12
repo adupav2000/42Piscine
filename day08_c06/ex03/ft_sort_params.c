@@ -6,12 +6,12 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 16:54:06 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/10 23:29:59 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/12 23:19:39 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
+
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
@@ -30,46 +30,47 @@ void	ft_putstr(char *str)
 	write(1, &"\n", 1);
 }
 
-int	ft_strcmp_evo(char *s1, char *s2)
+int		ft_strcmp(char *s1, char *s2)
 {
 	int i;
-	int x;
 
 	i = 0;
-	while (s2[i] || s1[i])
+	while (s2[i] && s1[i])
 	{
 		if ((s1[i] - s2[i]))
-			x += (s1[i] - s2[i]);
+		{
+			return (s1[i] - s2[i]);
+		}
 		i++;
 	}
-	return (x);
+	return (s1[i] - s2[i]);
 }
 
-int main(int argc, char *argv[])
+int		main(int argc, char *argv[])
 {
-	char **argv_copy = argv;
-	int i;
-	int i_2;
-	char *extract;
+	char	**argv_copy;
+	int		i[3];
+	char	*extract;
 
-	i = 0;
-	while (i++ < argc )
+	if (argc < 2)
+		return (1);
+	i[0] = 0;
+	argv_copy = argv;
+	while (i[0]++ < (argc * 2))
 	{
-		i_2 = 1;
-		while (i_2 < (argc - 1))
+		i[1] = 0;
+		while (argv_copy[++i[1] + 1])
 		{
-			printf("%s\n", argv_copy[i_2 + 1]);
-			if (0 < ft_strcmp_evo(argv_copy[i_2 + 1], argv_copy[i_2]))
+			if (0 < ft_strcmp(argv_copy[i[1]], argv_copy[i[1] + 1]))
 			{
-				extract = argv_copy[i_2 + 1];
-				argv_copy[i_2 + 1] = argv_copy[i_2];
-				argv_copy[i_2] = extract;
+				extract = argv_copy[i[1] + 1];
+				argv_copy[i[1] + 1] = argv_copy[i[1]];
+				argv_copy[i[1]] = extract;
 			}
-			i_2++;
 		}
 	}
-	i = 1;
-	while (argv_copy[i])
-		ft_putstr(argv_copy[i++]);
+	i[0] = 1;
+	while (argv_copy[i[0]])
+		ft_putstr(argv_copy[i[0]++]);
 	return (0);
 }

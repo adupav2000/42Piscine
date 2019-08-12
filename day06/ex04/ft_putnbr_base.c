@@ -6,7 +6,7 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 23:43:57 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/09 15:45:58 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/12 15:17:14 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,6 @@ int		ft_strlen(char *str)
 	return (length);
 }
 
-void	ft_rev_int_tab(int *tab, int size)
-{
-	int extract;
-	int i;
-
-	i = 0;
-	while (i < (size - i))
-	{
-		extract = tab[i];
-		tab[i] = tab[(size - 1) - i];
-		tab[(size - 1) - i] = extract;
-		i++;
-	}
-}
-
 int		check_base(char *base)
 {
 	int i;
@@ -51,7 +36,9 @@ int		check_base(char *base)
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == '+' || base[i] == '-')
+		if (base[i] == '+' || base[i] == '-'
+			|| base[i] == '\t' || base[i] == '\n' || base[i] == '\v'
+			|| base[i] == '\r' || base[i] == ' ' || base[i] == '\f')
 			return (0);
 		j = 0;
 		while (base[j])
@@ -80,7 +67,7 @@ void	ft_putstr(char *str)
 void	ft_putnbr_base(int nbr, char *base)
 {
 	int		i[7];
-	char	str[700];
+	char	str[70000];
 
 	i[0] = 0;
 	i[2] = ft_strlen(base);

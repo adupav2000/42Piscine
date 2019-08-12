@@ -6,16 +6,6 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 12:43:36 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/09 12:45:39 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/11 21:03:14 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int map_reframe(int hrange, lrange)
-{
-	
-}
-
-int ft_ten_queens_puzzle(void)
-{
-
-}

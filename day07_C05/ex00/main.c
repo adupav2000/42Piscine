@@ -30,6 +30,6 @@ int main()
 	// printf("%d\n", check_base("0"));
 	// printf("%d\n", check_base("0123Q456789ABCDEF-"));
 	// printf("%d\n", check_base("0123QA456789ABCDE-F-"));
-	printf("%d\n", ft_iterative_factorial(10));
+	printf("%d\n", ft_iterative_factorial(8));
 	return 0;
 }

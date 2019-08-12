@@ -123,3 +123,35 @@ char	*ft_strcpy(char *dest, char *src)
 	dest[i] = 0;
 	return (dest);
 }
+
+
+void	ft_rev_int_tab(int *tab, int size)
+{
+	int extract;
+	int i;
+
+	i = 0;
+	while (i < (size - i))
+	{
+		extract = tab[i];
+		tab[i] = tab[(size - 1) - i];
+		tab[(size - 1) - i] = extract;
+		i++;
+	}
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int i;
+
+	i = 0;
+	while (s2[i] && s1[i])
+	{
+		if ((s1[i] - s2[i]))
+		{
+			return (s1[i] - s2[i]);
+		}
+		i++;
+	}
+	return (s1[i] - s2[i]);
+}
