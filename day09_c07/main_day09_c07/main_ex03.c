@@ -11,10 +11,10 @@ int main()
 	strs[1] = "asdf1";
 	strs[2] = "asdf2";
 	strs[3] = "asdf3";
-	strs[4] = "asdf4";
+	strs[4] = "asd acadsdcsdcf4";
 	strs[5] = "asdf5";
 	
-	ret = ft_strjoin(3, strs, sepp);
+	ret = ft_strjoin(5, strs, sepp);
 	printf("*%s*\n", ret);	
 
 	return 0;

@@ -12,28 +12,6 @@ int		ft_strlen(char *str)
 	return (length);
 }
 
-char	*ft_strcat(char *dest, char *src)
-{
-	int		i;
-	int		i2;
-	char	*ret;
-
-	ret = dest;
-	i2 = -1;
-	i = ft_strlen(ret);
-	while (src[++i2])
-	{
-		ret[i] = src[i2];
-		i++;
-	}
-	i--;
-	while (ret[++i])
-	{
-		ret[i] = '\0';
-	}
-	return (ret);
-}
-
 char *ft_strjoin(int size, char **strs, char *sep)
 {
 	int i[3];
@@ -58,18 +36,14 @@ char *ft_strjoin(int size, char **strs, char *sep)
 	while(i[0] <= size)
 	{
 		i[1] = 0;
-		printf("ss1\n");
 		while (i[1] < ft_strlen(strs[i[0]]))
 		{
-			printf("--ss2 +++ %c\n", strs[i[0]][i[1]]);
 			ret_val[i[2]++] = strs[i[0]][i[1]];
 			i[1]++;
 		}
-		printf("ss3-\n");
-
-		ret_val[i[2]++] = *sep;
 		i[0]++;
-
+		if (i[0] <= size)
+			ret_val[i[2]++] = *sep;	
 	}
 	return (ret_val);
 }

@@ -6,7 +6,7 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 00:07:46 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/12 15:16:26 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/13 16:07:01 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ int	check_base(char *base)
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == '+' || base[i] == '-'
-			|| base[i] == '\t' || base[i] == '\n' || base[i] == '\v'
-			|| base[i] == '\r' || base[i] == ' ' || base[i] == '\f')
+		if (base[i] == '+' || base[i] == '-' || base[i] == ' ')
 			return (0);
 		j = 0;
 		while (base[j])
@@ -96,9 +94,8 @@ int	ft_atoi_base(char *str, char *base)
 	status = 0;
 	if (!check_base(base))
 		return (0);
-	while (str[i1] == '\t' || str[i1] == '\n' || str[i1] == '\v')
-		i1++;
-	while (str[i1] == '\r' || str[i1] == ' ' || str[i1] == '\f')
+	while (str[i1] == '\t' || str[i1] == '\n' || str[i1] == '\v' 
+		|| str[i1] == '\r' || str[i1] == ' ' || str[i1] == '\f')
 		i1++;
 	while (str[i1] == '-' || str[i1] == '+')
 	{
