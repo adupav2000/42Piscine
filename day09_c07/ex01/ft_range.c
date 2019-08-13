@@ -10,7 +10,7 @@ int	*ft_range(int min,int max)
 	size = max - min;
 	if (size <= 0)
 		return (list);
-	list = malloc(size * sizeof(*list));
+	list = malloc(size * sizeof(int));
 	i = 0;
 	while (min + i < max)
 	{
