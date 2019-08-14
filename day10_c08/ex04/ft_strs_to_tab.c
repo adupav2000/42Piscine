@@ -33,7 +33,7 @@ int	ft_strlen(char *str)
 struct s_stock_str *ft_strs_to_tab(int ac, char **av)
 {
 	int i;
-	struct s_stock_str *tab;
+	struct s_stock_str tab[9];
 
 	i = 1;
 	while (i < ac)
@@ -43,8 +43,9 @@ struct s_stock_str *ft_strs_to_tab(int ac, char **av)
 		tab[i].str = malloc(sizeof(char) * ft_strlen(av[i]) + 1);
 		tab[i].str = av[i];
 		tab[i].copy = malloc(sizeof(char) * ft_strlen(av[i]) + 1);
-		tab[i].copy = av[i];
+		tab[i].copy =ft_strcpy(tab[i].copy, av[i]);
 		i++;
 	}
+	printf("%s\n", tab[1].copy);
 	return (tab);
 }
