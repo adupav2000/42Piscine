@@ -5,6 +5,7 @@ FILES_SRCS = ft_read_files.c
 FILES_OBJ = ${FILES_SRCS:.c=.o}
 
 all: secure_comp
+	${CC} ${CFLAGS} -o ${FILE_NAME} ${FILES_OBJ}
 	
 
 secure_comp:	${FILES_SRCS}
