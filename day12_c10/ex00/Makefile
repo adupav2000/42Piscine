@@ -4,10 +4,8 @@ FILE_NAME = ft_display_file
 FILES_SRCS = ft_read_files.c
 FILES_OBJ = ${FILES_SRCS:.c=.o}
 
-all: secure_comp
+all: secure_comp ${FILES_OBJ}
 	${CC} ${CFLAGS} -o ${FILE_NAME} ${FILES_OBJ}
-	
-
 secure_comp:	${FILES_SRCS}
 	${CC} ${CFLAGS} -c ${FILES_SRCS}
 clean: 
