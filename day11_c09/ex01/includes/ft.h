@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_s_stock_str.h                                   :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/14 19:03:23 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/14 19:14:09 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/13 19:48:45 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/15 18:44:39 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __FT_S_STOCK_STR_H__
-#define __FT_S_STOCK_STR_H__
+#ifndef FT_H
+# define FT_H
 
-typedef struct s_stock_str
-{
-	int size;
-	char *str;
-	char *copy;
-} t_stock_str;
+void	ft_putchar(char c);
+void	ft_swap(int *a, int *b);
+void	ft_putstr(char *str);
+int		ft_strlen(char *str);
+int		ft_strcmp(char *s1, char *s2);
 
-#endif __FT_S_STOCK_STR_H__
+#endif

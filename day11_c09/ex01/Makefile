@@ -10,8 +10,8 @@ all: sec_comp
 	ranlib ${LIB}
 
 sec_comp: ${FICHIER_OBJS}
-		${CC} ${C FLAGS} -c ${FICHIER_SRC} -o ${FICHIER_OBJS}
-
+		${CC} ${C FLAGS} -c ${FICHIER_SRC}
+		mv *.o srcs/
 clean:
 	rm -f ${FICHIER_OBJS}
 

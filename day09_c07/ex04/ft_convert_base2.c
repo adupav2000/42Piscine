@@ -6,7 +6,7 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 16:27:39 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/14 21:38:36 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/15 16:59:10 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int		check_base(char *base)
 
 char *convert_dec_to_base(long long int dec_val, char *base)
 {
-	char *rev_ret;
-	char *true_ret_val;
+	char rev_ret[200];
+	char true_ret_val[200];
 	int i;
 	int i2;
 	int pos;
@@ -65,17 +65,11 @@ char *convert_dec_to_base(long long int dec_val, char *base)
 		pos = -1;
 	while (dec_val > ft_strlen(base))
 	{
-		printf("SEG FAULT FINDER STAGE __ FIRST WHILE _ dec_val = %llu\n", dec_val);
-		printf("SEG FAULT FINDER STAGE __ FIRST WHILE _ dec_val modulo ft_strlen(base) = %c\n", base[dec_val % ft_strlen(base)]);
-		// +++++++ FAIL POINT
-		//seg fault at this point find way to allocate memory !!
 		rev_ret[i] = (char)malloc(sizeof(char));
-		printf("SEG FAULT FINDER STAGE __ FIRST WHILE _ dec_val = %llu\n", dec_val);
 		rev_ret[i] = base[dec_val % ft_strlen(base)];
 		dec_val = dec_val / ft_strlen(base);
 		i++;
 	}
-	printf("SEG FAULT FINDER STAGE __ MIDDLE\n");
 	rev_ret[i] = base[dec_val % ft_strlen(base)];
 	i2 = 0;
 	while(i2 < i)
