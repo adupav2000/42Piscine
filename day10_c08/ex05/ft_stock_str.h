@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_point.h                                         :+:      :+:    :+:   */
+/*   ft_stock_str.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 19:03:23 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/14 19:06:55 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/15 19:41:36 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef __FT_POINT_H__
-#define __FT_POINT_H__
+#ifndef __FT_STOCK_STR_H__
+#define __FT_STOCK_STR_H__
 
-typedef struct s_point
+typedef struct	s_stock_str
 {
-	int x;
-	int y;
-	
-} t_point;
+	int size;
+	char *str;
+	char *copy;
+} 				t_stock_str;
 
-#endif __FT_POINT_H__
+#endif

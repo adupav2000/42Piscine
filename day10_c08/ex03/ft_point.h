@@ -1,9 +1,22 @@
-#ifndef __FT_POINT_H__
-#define __FT_POINT_H__
-typedef struct u_point
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/15 19:30:33 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/15 20:04:42 by adu-pavi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FT_POINT_H
+# define FT_POINT_H
+
+typedef	struct	s_point
 {
-	int x; 
+	int x;
 	int y;
-} t_point;
+}				t_point;
 
 #endif

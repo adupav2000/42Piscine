@@ -6,34 +6,14 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 18:05:00 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/14 22:50:44 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/15 22:19:52 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "ft_stock_str.h"
 
-typedef struct s_stock_str
-{
-	int size;
-	char *str;
-	char *copy;
-} t_stock_str;
-
-char	*ft_strcpy(char *dest, char *src)
-{
-	int i;
-
-	i = 0;
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = 0;
-	return (dest);
-}
-
-int	ft_strlen(char *str)
+int					ft_strlen(char *str)
 {
 	int	length;
 
@@ -43,26 +23,25 @@ int	ft_strlen(char *str)
 	return (length);
 }
 
-struct s_stock_str *ft_strs_to_tab(int ac, char **av)
+struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
-	int i;
-	struct s_stock_str *tab;
+	int					i;
+	t_stock_str			*tab;
 
 	i = 0;
 	if (!(tab = malloc(sizeof(t_stock_str) * ac)))
 		return (NULL);
-	while ((i + 1) < ac)
+	while ((i) < ac)
 	{
-		tab[i].size  = ft_strlen(av[i + 1]);
-		if (!(tab[i].str = (char *)malloc(sizeof(char) * ft_strlen(av[i + 1]) + 1)))
+		tab[i].size = ft_strlen(av[i]);
+		if (!(tab[i].str = (char *)malloc(sizeof(char) * (tab[i].size + 1))))
 			return (NULL);
-		tab[i].str = av[i + 1];
-		if (!(tab[i].copy = (char *)malloc(sizeof(char) * ft_strlen(av[i]) + 1)))
+		tab[i].str = av[i];
+		if (!(tab[i].copy = (char *)malloc(sizeof(char) * (tab[i].size + 1))))
 			return (NULL);
-		tab[i].copy = ft_strcpy(tab[i].copy, av[i + 1]);
+		tab[i].copy = tab[i].str;
 		i++;
 	}
-
 	tab[i].size = 0;
 	if (!(tab[i].str = (char *)malloc(sizeof(char))))
 		return (NULL);
@@ -70,6 +49,5 @@ struct s_stock_str *ft_strs_to_tab(int ac, char **av)
 	if (!(tab[i].copy = (char *)malloc(sizeof(char))))
 		return (NULL);
 	tab[i].copy = NULL;
-
 	return (tab);
 }

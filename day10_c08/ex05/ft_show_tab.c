@@ -6,12 +6,12 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 15:27:07 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/14 19:14:17 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/15 19:42:57 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "ft_s_stock_str.h"
+#include "ft_stock_str.h"
 
 void	ft_putnbr(int nb)
 {
@@ -55,13 +55,12 @@ void	ft_putstr(char *str)
 	}
 }
 
-
-void ft_show_tab(struct s_stock_str *par)
+void	ft_show_tab(t_stock_str *par)
 {
 	int i;
 
 	i = 0;
-	while (par[i])
+	while (par[i].str != NULL)
 	{
 		ft_putstr(par[i].str);
 		write(1, &"\n", 1);
