@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strs_to_tab.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/14 18:05:00 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/14 22:50:44 by adu-pavi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
+
 typedef struct s_stock_str
 {
 	int size;
@@ -33,19 +46,30 @@ int	ft_strlen(char *str)
 struct s_stock_str *ft_strs_to_tab(int ac, char **av)
 {
 	int i;
-	struct s_stock_str tab[9];
+	struct s_stock_str *tab;
 
-	i = 1;
-	while (i < ac)
+	i = 0;
+	if (!(tab = malloc(sizeof(t_stock_str) * ac)))
+		return (NULL);
+	while ((i + 1) < ac)
 	{
-		tab[i].size  = ft_strlen(av[i]);
-
-		tab[i].str = malloc(sizeof(char) * ft_strlen(av[i]) + 1);
-		tab[i].str = av[i];
-		tab[i].copy = malloc(sizeof(char) * ft_strlen(av[i]) + 1);
-		tab[i].copy =ft_strcpy(tab[i].copy, av[i]);
+		tab[i].size  = ft_strlen(av[i + 1]);
+		if (!(tab[i].str = (char *)malloc(sizeof(char) * ft_strlen(av[i + 1]) + 1)))
+			return (NULL);
+		tab[i].str = av[i + 1];
+		if (!(tab[i].copy = (char *)malloc(sizeof(char) * ft_strlen(av[i]) + 1)))
+			return (NULL);
+		tab[i].copy = ft_strcpy(tab[i].copy, av[i + 1]);
 		i++;
 	}
-	printf("%s\n", tab[1].copy);
+
+	tab[i].size = 0;
+	if (!(tab[i].str = (char *)malloc(sizeof(char))))
+		return (NULL);
+	tab[i].str = NULL;
+	if (!(tab[i].copy = (char *)malloc(sizeof(char))))
+		return (NULL);
+	tab[i].copy = NULL;
+
 	return (tab);
 }

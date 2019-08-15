@@ -1,13 +1,13 @@
 #include <stdio.h>
-#include "ft_strs_to_tab.c"
+#include "../ex04/ft_strs_to_tab.c"
+#include "ft_show_tab.c"
+
+
 
 int main(int argc, char const *argv[])
 {
 	struct s_stock_str *r;
 	r = ft_strs_to_tab(argc, (char **)argv);
-	printf("%d\n", r[1].size);
-	printf("%s\n", r[1].str);
-	printf("%s\n", r[1].copy);
-
+	ft_show_tab(r);
 	return 0;
 }
