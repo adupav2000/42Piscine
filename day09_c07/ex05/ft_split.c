@@ -6,22 +6,14 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 21:51:44 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/16 00:02:42 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/16 15:53:21 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 
-/*
-En fonction de l'index donné, la fonction renvoie une position qui correspond 
-a un element du charset 
-exemple: 
-	str = "abc;efg,abc/efg;abc;efg"
-	charset = ";,/"
-	avec index = 0 -> return = 4 car str[4] = ';' qui se trouve dans le charset
-si l'index est trop haut la fonction renverra -1
-*/
+
 int return_charset_pos(int index, char *str, char *charset)
 {
 	int index_pos;// index en fonction du nombre de caractere present 
@@ -47,23 +39,6 @@ int return_charset_pos(int index, char *str, char *charset)
 		pos_in_char++;
 	}
 	return (-1);
-}
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char *str)
-{
-	int length;
-
-	length = 0;
-	while (str[length] != 0)
-	{
-		ft_putchar(str[length]);
-		length++;
-	}
 }
 
 int	ft_strlen(char *str)
@@ -96,50 +71,30 @@ char *return_split_string_part(int index_begin, int index_end, char *full_char)
 	return (str);
 }
 
-
-
-
-char *replace_charset(char *str, char *charset)
-{
-	char *ret_val;
-	int i;
-	int i1;
-	int charset_pos;
-	int check;
-
-	ret_val = malloc(sizeof(char)*(ft_strlen(str) + 1));
-	i = 0;
-	i1 = 0;
-	while(str[i])
-	{
-		charset_pos = 0;
-		check = 0;
-		while (charset[charset_pos])
-		{
-			if (charset[charset_pos] == str[i])
-				check = 1;
-			if (str[i + 1] == charset[charset_pos] && str[i] == charset[charset_pos])
-				i++;
-			charset_pos++;
-		}
-		if (check == 1)
-			ret_val[i1] = charset[0];
-		else 
-			ret_val[i1] = str[i];
-		i1++;
-		i++;
-	}
-	ret_val[i1] = 0;
-	return (ret_val);
-}
-
-
 int return_count_of_words(char *str, char *charset)
 {
-	int word_num = 0;
+	int word_num;
 	int charset_pos;
 	int str_pos;
 
+	word_num = 1;
+	str_pos = 0;
+	while (str[str_pos])
+	{
+		charset_pos = 0;
+		while(charset[charset_pos])
+		{
+			// printf("%c - %c - %d\n", charset[charset_pos], str[str_pos], word_num);
+			if (charset[charset_pos] == str[str_pos] 
+				&& str_pos != ((ft_strlen(str) - 1) | 0))
+				word_num++;
+			if (charset[charset_pos] == str[str_pos - 1]
+				&& charset[charset_pos] == str[str_pos])
+				word_num--;
+			charset_pos++;
+		}
+		str_pos++;
+	}
 	return (word_num);
 }
 
@@ -147,51 +102,28 @@ int return_count_of_words(char *str, char *charset)
 char **ft_split(char *str, char *charset)
 {
 	int i;
-	char *ret_val;
-	char *ip;
+	char **ret_val;
 	int pos_0;
 	int pos_1;
 
 	i = 0;
-	ret_val = NULL;
+	ret_val = malloc(sizeof(char **)*(return_count_of_words(str, charset) + 1));
 	pos_1 = 0;
 	pos_0 = 0;
-	while (return_charset_pos(i, str, charset))
+	while (return_charset_pos(i, str, charset) != -1)
 	{
-		pos_0 = return_charset_pos(i, str, charset);
-		pos_1 = return_charset_pos((i + 1), str, charset);
+		pos_1 = return_charset_pos(i, str, charset);
 		if (pos_1 == -1)
 		{
 			pos_1 = ft_strlen(str);
-			ip = malloc(sizeof(char)*(pos_1 - pos_0) + 1);
-			ip = return_split_string_part((pos_0 + 1), (pos_1), str);
-			ip[pos_1 - pos_0 + 1] = 0;
-			ret_val[i] = &ip;
 			break;
 		}
-		if (i == 0)
-		{
-			pos_1 = return_charset_pos((i + 1), str, charset);
-			ft_putstr("position 1\n");
-			printf("%d, pos_0, %d, pos_1, %d\n", (pos_1 - pos_0 + 1), pos_0, pos_1);
-			// ret_val[i] = malloc(sizeof(char)*(pos_1 - pos_0 + 1));
-			ip = malloc(sizeof(char)*(pos_1 - pos_0 + 1));
-			ft_putstr("IP a ete assigné\n");
-
-			// printf("%s\n", "position - 1");
-			ip = return_split_string_part((pos_0), (pos_1 - 1), str);//changed the position of pos_0
-			// printf("%s\n", "position - 1");
-			ip[pos_1 - pos_0 + 1] = 0;
-			ft_putstr(ip);
-			ret_val[i] = &ip;
-		}
-		else 
-		{
-			ip = malloc(sizeof(char)*(pos_1 - pos_0 + 1));
-			ip = return_split_string_part((pos_0 + 1), (pos_1 - 1), str);
-			ip[pos_1 - pos_0 + 1] = 0;
-			ret_val[i] = &ip;
-		}
+		pos_1--;
+		ret_val[i] = (char *)malloc(sizeof(char)*(pos_1 - pos_0 + 4));
+		ret_val[i] = return_split_string_part((pos_0), (pos_1), str);
+		ret_val[pos_1 - pos_0 + 1] = 0;
+		printf("pos_0 = %d || pos_1 = %d || i = %d || ret_val[i] = %s\n\n", pos_0, pos_1, i , ret_val[i]);
+		pos_0 = return_charset_pos(i, str, charset) + 1;	
 		i++;
 	}
 	return (ret_val);
