@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: AlainduPavillon <AlainduPavillon@student.42.fr>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/13 16:27:39 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/15 16:59:10 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/16 01:21:33 by AlainduPavillon   #+#    #+#             */
+/*   Updated: 2019/08/16 11:41:37 by AlainduPavillon  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+void	ft_putstr(char *str)
+{
+	int length;
+
+	length = 0;
+	while (str[length] != 0)
+	{
+		ft_putchar(str[length]);
+		length++;
+	}
+}
+int ft_strlen(char *str)
 {
 	int	length;
 
@@ -59,8 +74,8 @@ char *convert_dec_to_base(long long int dec_val, char *base)
 
 	i = 0;
 	pos = 1;
-	// rev_ret = NULL;
-	// true_ret_val = NULL;
+	// rev_ret = malloc(sizeof(char *) * 90);
+	// true_ret_val = malloc(sizeof(char *) * 90);
 	if (dec_val < 0)
 		pos = -1;
 	while (dec_val > ft_strlen(base))
@@ -72,15 +87,16 @@ char *convert_dec_to_base(long long int dec_val, char *base)
 	}
 	rev_ret[i] = base[dec_val % ft_strlen(base)];
 	i2 = 0;
-	while(i2 < i)
+	true_ret_val = (char *)malloc(sizeof(base[dec_val % ft_strlen(base)]) + 2);
+	while(i2 <= i + 1)
 	{
 		if (pos == -1 && i2 == 0)
 		{
-			true_ret_val[i2++] = (char)malloc(sizeof(base[dec_val % ft_strlen(base)]));
-			true_ret_val[i2++] = '-';
+			true_ret_val[i2] = '-';
 			i++;
+			i2++;
 		}
-
+		printf("%s\n",true_ret_val);
 		true_ret_val[i2] = rev_ret[i - i2];
 		i2++;
 	}

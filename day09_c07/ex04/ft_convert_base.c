@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: AlainduPavillon <AlainduPavillon@student.42.fr>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 14:38:02 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/14 21:23:14 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/16 01:45:33 by AlainduPavillon  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,7 @@ char *ft_convert_base(char *nbr, char *base_from, char *base_to)
 	printf("STAGE -- 2 --- FUNCTION ft_convert_base\n");
 	ret_val = convert_dec_to_base(value_in_dec, base_to);
 	printf("NO _SEG_FAULT _____ CHECK ____ POSITIV\n");
+
+		printf("%s\n", ret_val);
 	return  (ret_val);
 }
