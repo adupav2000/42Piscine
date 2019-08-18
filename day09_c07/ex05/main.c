@@ -31,7 +31,6 @@ int main()
 	printf("%s\n", return_split_string_part(0, 4, i));
 	printf("%d\n", return_charset_pos(0, i, separator));
 	t = ft_split(i, separator);
-	while ()
 	printf(" 0 = = %s\n", ft_split(i, separator)[0]);
 	printf(" 1 = = %s\n", ft_split(i, separator)[1]);
 	printf(" 2 = = %s\n", ft_split(i, separator)[2]);

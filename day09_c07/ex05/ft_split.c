@@ -6,7 +6,7 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/14 21:51:44 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/16 15:53:21 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/18 19:35:56 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ int	ft_strlen(char *str)
 	return (length);
 }
 /*returns a string between the two index wich are considered as char pos in the string
-index_begin and index_end are both included 
-
+index_begin and index_end are both included
 */
 char *return_split_string_part(int index_begin, int index_end, char *full_char)
 {
@@ -71,29 +70,41 @@ char *return_split_string_part(int index_begin, int index_end, char *full_char)
 	return (str);
 }
 
-int return_count_of_words(char *str, char *charset)
+int is_charset(char *chaset, char c)
 {
-	int word_num;
-	int charset_pos;
-	int str_pos;
+	int i;
 
-	word_num = 1;
-	str_pos = 0;
-	while (str[str_pos])
+	while (chaset[i])
 	{
-		charset_pos = 0;
-		while(charset[charset_pos])
+		if (chaset[i++] == c)
+			return (1);
+	}
+	return (0);
+}
+
+int count_and_malloc(char *str, char *charset, char **tofill)
+{
+	int i;
+	int check;
+	int size_table;
+	int size_string[50];
+
+	i = 0;
+	check = 0;
+	while (str[i])
+	{
+		if (i == (0) && is_charset(str[i]))
+			i++;
+		if (is_charset(str[i]))
 		{
-			// printf("%c - %c - %d\n", charset[charset_pos], str[str_pos], word_num);
-			if (charset[charset_pos] == str[str_pos] 
-				&& str_pos != ((ft_strlen(str) - 1) | 0))
-				word_num++;
-			if (charset[charset_pos] == str[str_pos - 1]
-				&& charset[charset_pos] == str[str_pos])
-				word_num--;
-			charset_pos++;
+			size_table++;
+			check = 1;
+			i++;
 		}
-		str_pos++;
+		if(!is_charset(str[i]) )
+		{
+
+		}
 	}
 	return (word_num);
 }
