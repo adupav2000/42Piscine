@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_range.c                                         :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lothieve <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/16 15:53:44 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/19 13:27:04 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/01 13:04:39 by lothieve          #+#    #+#             */
+/*   Updated: 2019/08/02 13:17:20 by lothieve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int	*ft_range(int min, int max)
+char	*ft_strcat(char *dest, char *src)
 {
-	int *list;
-	int size;
 	int i;
 
-	list = 0;
-	size = max - min;
-	if (size <= 0)
-		return (list);
-	if ((list = malloc(size * sizeof(int))) == NULL)
-		return (0);
 	i = 0;
-	while (min + i < max)
-	{
-		list[i] = min + i;
+	while (dest[i])
 		i++;
+	while (*src)
+	{
+		dest[i] = *src;
+		i++;
+		src++;
 	}
-	return (list);
+	dest[i] = '\0';
+	return (dest);
 }

@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_ex02.c                                        :+:      :+:    :+:   */
+/*   list.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lothieve <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/19 14:35:22 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/19 14:37:40 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/17 10:03:34 by lothieve          #+#    #+#             */
+/*   Updated: 2019/08/18 16:33:05 by lothieve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../ex02/ft_ultimate_range.c"
+#ifndef LIST_H
+# define LIST_H
 
-int main()
+typedef struct	s_list
 {
-	int *range; 
-	int x;
-	x = ft_ultimate_range(&range, 2, 900);
-	printf("%d\n", x);
-	int i = 0;
-	while (range[i])
-	{
-		printf("%d\n", range[i++]);
-	}
-	
-}
+	char			*nbr;
+	char			*value;
+	struct s_list	*next;
+}				t_list;
+
+#endif

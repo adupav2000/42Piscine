@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_ex02.c                                        :+:      :+:    :+:   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lothieve <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/19 14:35:22 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/19 14:37:40 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/17 15:49:11 by lothieve          #+#    #+#             */
+/*   Updated: 2019/08/18 16:33:28 by lothieve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../ex02/ft_ultimate_range.c"
+#include "rush.h"
 
-int main()
+t_list
+	*create_elem(char *nb, char *str)
 {
-	int *range; 
-	int x;
-	x = ft_ultimate_range(&range, 2, 900);
-	printf("%d\n", x);
-	int i = 0;
-	while (range[i])
-	{
-		printf("%d\n", range[i++]);
-	}
-	
+	t_list *elem;
+
+	elem = NULL;
+	if (!(elem = malloc(sizeof(t_list))))
+		return (NULL);
+	elem->nbr = nb;
+	elem->value = str;
+	elem->next = NULL;
+	return (elem);
 }

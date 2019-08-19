@@ -6,7 +6,7 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 14:29:14 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/16 16:03:56 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/19 20:39:46 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,28 @@ int		ft_strlen(char *str)
 	return (length);
 }
 
+char	*ft_strcat(char *dest, char *src)
+{
+	int		i;
+	int		i2;
+	char	*ret;
+
+	ret = dest;
+	i2 = -1;
+	i = ft_strlen(ret);
+	while (src[++i2])
+	{
+		ret[i] = src[i2];
+		i++;
+	}
+	i--;
+	while (ret[++i])
+	{
+		ret[i] = '\0';
+	}
+	return (ret);
+}
+
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	int		i[3];
@@ -37,16 +59,15 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	size_malloc = 0;
 	while (i[0] <= size)
 		size_malloc += ft_strlen(strs[i[0]++]);
-	ret_val = malloc(size_malloc * (sizeof(char) + 1) + 1);
+	if (!(ret_val = (char *)malloc(size_malloc * (sizeof(char) + 1) + 1)))
+		return (0);
 	i[0] = 0;
-	i[2] = 0;
 	while (i[0] <= size)
 	{
-		i[1] = 0;
-		while (i[1] < ft_strlen(strs[i[0]]))
-			ret_val[i[2]++] = strs[i[0]][i[1]++];
-		if (i[0]++ <= size)
-			ret_val[i[2]++] = *sep;
+		ft_strcat(ret_val, strs[i[0]]);
+		if (i[0] + 1 <= size)
+			ft_strcat(ret_val, sep);
+		i[0]++;
 	}
 	return (ret_val);
 }

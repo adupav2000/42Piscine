@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_range.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/16 15:53:44 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/19 13:27:04 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/19 11:52:55 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/19 18:31:28 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int	*ft_range(int min, int max)
+#include <stdio.h>
+#include "ft_split.c"
+int main(int argc, char **argv)
 {
-	int *list;
-	int size;
-	int i;
-
-	list = 0;
-	size = max - min;
-	if (size <= 0)
-		return (list);
-	if ((list = malloc(size * sizeof(int))) == NULL)
-		return (0);
-	i = 0;
-	while (min + i < max)
-	{
-		list[i] = min + i;
-		i++;
-	}
-	return (list);
+	(void)argc;
+	int i = 0;
+	char **s = ft_split(argv[1], argv[2]);
+	ft_putstr("--%d\n", count_words(argv[1], argv[2]));
 }

@@ -5,137 +5,109 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/14 21:51:44 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/18 19:35:56 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/18 13:09:24 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/19 19:22:54 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <unistd.h>
 
-
-int return_charset_pos(int index, char *str, char *charset)
+int		is_in_string(char c, char *whites)
 {
-	int index_pos;// index en fonction du nombre de caractere present 
-	//dans la charset découvert
-	int pos_in_char;// position a un moment donné dans str (donné en argument)
-	// pos_in_char est la valeur renvoyé
-	int pos_in_charset;// sert a scanner le charset 
-
-	index_pos = 0;
-	pos_in_char = 0;
-	while (str[pos_in_char])
-	{
-		pos_in_charset = 0;// pour bien passer dans toute la charset
-		while (charset[pos_in_charset]) // tant qu'il y a des element dans la charset 
-		{
-			if (charset[pos_in_charset] == str[pos_in_char]) // est ce que l'element est dans la charset
-			{
-				if (index_pos++ == index) // on a trouvé un charset, incrementation de index_pos
-					return (pos_in_char);// si index_pos 
-			}
-			pos_in_charset++;
-		}
-		pos_in_char++;
-	}
-	return (-1);
-}
-
-int	ft_strlen(char *str)
-{
-	int	length;
-
-	length = 0;
-	while (str[length] != 0)
-	{
-		length++;
-	}
-	return (length);
-}
-/*returns a string between the two index wich are considered as char pos in the string
-index_begin and index_end are both included
-*/
-char *return_split_string_part(int index_begin, int index_end, char *full_char)
-{
-	char *str;
 	int i;
 
 	i = 0;
-	if ((index_end - index_begin) <= 0 || ft_strlen(full_char) <= 1)
-		return (NULL);
-	str = malloc(sizeof(str)*(index_end - index_begin) + 1);
-	while (index_begin <= index_end)
-		str[i++] = full_char[index_begin++];
-	str[i] = 0;
-	return (str);
-}
-
-int is_charset(char *chaset, char c)
-{
-	int i;
-
-	while (chaset[i])
+	while (whites[i] != '\0')
 	{
-		if (chaset[i++] == c)
+		if (whites[i] == c)
 			return (1);
+		++i;
 	}
 	return (0);
 }
 
-int count_and_malloc(char *str, char *charset, char **tofill)
+int		count_word(char *str, char *whites)
 {
+	int	word;
+	int number_words;
 	int i;
-	int check;
-	int size_table;
-	int size_string[50];
 
+	word = 0;
+	number_words = 0;
 	i = 0;
-	check = 0;
-	while (str[i])
+	while (str[i] != '\0')
 	{
-		if (i == (0) && is_charset(str[i]))
-			i++;
-		if (is_charset(str[i]))
+		if (!is_in_string(str[i], whites) && word == 0)
 		{
-			size_table++;
-			check = 1;
-			i++;
+			++number_words;
+			word = 1;
 		}
-		if(!is_charset(str[i]) )
+		else if (is_in_string(str[i], whites))
 		{
-
+			word = 0;
 		}
+		++i;
 	}
-	return (word_num);
+	return (number_words);
 }
 
-
-char **ft_split(char *str, char *charset)
+int		calculate_length(char *str, char *whites)
 {
 	int i;
-	char **ret_val;
-	int pos_0;
-	int pos_1;
 
 	i = 0;
-	ret_val = malloc(sizeof(char **)*(return_count_of_words(str, charset) + 1));
-	pos_1 = 0;
-	pos_0 = 0;
-	while (return_charset_pos(i, str, charset) != -1)
+	while (str[i] != '\0' && !is_in_string(str[i], whites))
+		++i;
+	return (i);
+}
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int i;
+
+	i = 0;
+	while (src[i] != '\0' && i < n)
 	{
-		pos_1 = return_charset_pos(i, str, charset);
-		if (pos_1 == -1)
-		{
-			pos_1 = ft_strlen(str);
-			break;
-		}
-		pos_1--;
-		ret_val[i] = (char *)malloc(sizeof(char)*(pos_1 - pos_0 + 4));
-		ret_val[i] = return_split_string_part((pos_0), (pos_1), str);
-		ret_val[pos_1 - pos_0 + 1] = 0;
-		printf("pos_0 = %d || pos_1 = %d || i = %d || ret_val[i] = %s\n\n", pos_0, pos_1, i , ret_val[i]);
-		pos_0 = return_charset_pos(i, str, charset) + 1;	
-		i++;
+		dest[i] = src[i];
+		++i;
 	}
-	return (ret_val);
+	if (i < n && src[i] == '\0')
+	{
+		while (dest[i] != '\0')
+		{
+			dest[i] = '\0';
+			++i;
+		}
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+char	**ft_split(char *str, char *charset)
+{
+	char	**array;
+	int		word;
+	int		i;
+	int		length[2];
+
+	array = (char **)malloc(count_word(str, charset) * sizeof(char *) + 1);
+	word = 0;
+	length[1] = 0;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (!is_in_string(str[i], charset) && word == 0)
+		{
+			word = 1;
+			length[0] = calculate_length(&str[i], charset);
+			array[length[1]] = (char *)malloc((length[0]) * sizeof(char));
+			array[length[1]] = ft_strncpy(array[length[1]], &str[i], length[0]);
+			++length[1];
+		}
+		else if (is_in_string(str[i], charset))
+			word = 0;
+		++i;
+	}
+	array[length[1]] = 0;
+	return (array);
 }

@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_ex02.c                                        :+:      :+:    :+:   */
+/*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adu-pavi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/19 14:35:22 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/19 14:37:40 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/18 14:43:28 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/18 14:50:59 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../ex02/ft_ultimate_range.c"
+#include "rush.h"
 
-int main()
+t_split split (char *num, int n);
+t_list *find_greater_low(t_list *index, char *num);
+
+int main(int argc, char **argv)
 {
-	int *range; 
-	int x;
-	x = ft_ultimate_range(&range, 2, 900);
-	printf("%d\n", x);
-	int i = 0;
-	while (range[i])
-	{
-		printf("%d\n", range[i++]);
-	}
-	
+	(void)argc;
+
+	t_list *index;
+	index = parse(argv[1]);
+	print_num(index, argv[2]);
 }
+

@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_ex02.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lothieve <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/19 14:35:22 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/19 14:37:40 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/07/30 20:48:21 by lothieve          #+#    #+#             */
+/*   Updated: 2019/07/31 08:53:42 by lothieve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../ex02/ft_ultimate_range.c"
+#include <unistd.h>
 
-int main()
+void	ft_putstr(char *str)
 {
-	int *range; 
-	int x;
-	x = ft_ultimate_range(&range, 2, 900);
-	printf("%d\n", x);
-	int i = 0;
-	while (range[i])
+	while (*str)
 	{
-		printf("%d\n", range[i++]);
+		write(1, str, 1);
+		str++;
 	}
-	
 }

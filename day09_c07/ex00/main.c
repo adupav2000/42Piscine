@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_ex02.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adu-pavi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/19 14:35:22 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/19 14:37:40 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/19 13:14:27 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/19 13:19:12 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "../ex02/ft_ultimate_range.c"
+#include "ft_strdup.c"
 
 int main()
 {
-	int *range; 
-	int x;
-	x = ft_ultimate_range(&range, 2, 900);
-	printf("%d\n", x);
-	int i = 0;
-	while (range[i])
-	{
-		printf("%d\n", range[i++]);
-	}
-	
+	char *s = ft_strdup("asdasdasd0.");
+	printf("%s\n", s);
 }

@@ -6,7 +6,7 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 22:39:06 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/16 16:07:32 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/19 13:05:57 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ char	*ft_strdup(char *src)
 	st = malloc(len);
 	if (st == NULL)
 		return (NULL);
-	while (src[i] == '\0')
+	i = 0;
+	while (src[i])
 	{
 		st[i] = src[i];
 		i++;

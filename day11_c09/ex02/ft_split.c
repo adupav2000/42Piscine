@@ -5,116 +5,109 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/15 00:18:37 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/18 20:08:53 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/18 13:09:24 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/19 19:22:54 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <stdlib.h>
-	
-int		ft_check_charset(char c, char *charset) 
+
+int		is_in_string(char c, char *whites)
 {
-	int	i;
+	int i;
 
 	i = 0;
-	while (charset[i])
+	while (whites[i] != '\0')
 	{
-		if (c == charset[i])
+		if (whites[i] == c)
 			return (1);
 		++i;
 	}
 	return (0);
 }
 
-int		ft_check_word(char c, char c_b, char *charset)
+int		count_word(char *str, char *whites)
 {
-	return (!ft_check_charset(c, charset) && ft_check_charset(c_b, charset));   
+	int	word;
+	int number_words;
+	int i;
+
+	word = 0;
+	number_words = 0;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (!is_in_string(str[i], whites) && word == 0)
+		{
+			++number_words;
+			word = 1;
+		}
+		else if (is_in_string(str[i], whites))
+		{
+			word = 0;
+		}
+		++i;
+	}
+	return (number_words);
 }
 
-int		ft_count_word(char *str, char *charset)                        
+int		calculate_length(char *str, char *whites)
 {
-	int	words_count;
-	int	i;
+	int i;
 
 	i = 0;
-	words_count = 0;
-	while (str[i] != '\0')									
-	{	
-		if (ft_check_word(str[i], str[i - 1], charset) ||     
-			(!ft_check_charset(str[i], charset) && i == 0))				
-			words_count++;									
-		i++;
-	}
-	return (words_count);									
+	while (str[i] != '\0' && !is_in_string(str[i], whites))
+		++i;
+	return (i);
 }
 
-int		*ft_count_char(char *str, char *charset)			
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int	index;
-	int	i;
-	int	words_count;
-	int	*size_stock;										
+	unsigned int i;
 
-	i = 0;													
-	words_count = ft_count_word(str, charset);				
-	size_stock = malloc(words_count * sizeof(int));
-	while (i <= words_count)								
-	{																
-		size_stock[i] = 0;
-		i++;
-	}
-	i = 0;													
-	index = 0;
-	while (str[i] != '\0')										
+	i = 0;
+	while (src[i] != '\0' && i < n)
 	{
-		if (!ft_check_charset(str[i], charset))					
-			size_stock[index]++;								
-		else if (i > 0 && !ft_check_charset(str[i - 1], charset))	
-			index++;
-		i++;													
+		dest[i] = src[i];
+		++i;
 	}
-	return (size_stock);										
+	if (i < n && src[i] == '\0')
+	{
+		while (dest[i] != '\0')
+		{
+			dest[i] = '\0';
+			++i;
+		}
+	}
+	dest[i] = '\0';
+	return (dest);
 }
 
 char	**ft_split(char *str, char *charset)
 {
-	char	**string_tab;														
-	int		i;																	
-	int		j;
-	int		index;
-	int		*size_stock;													
+	char	**array;
+	int		word;
+	int		i;
+	int		length[2];
 
-	string_tab = malloc((ft_count_word(str, charset) + 1) * sizeof(char*));		
-	size_stock = ft_count_char(str, charset);								
-	index = 0;					
-	j = 0;
-	i = -1;
-	while (str[++i] != '\0')												
-	{																		
-		if (!ft_check_charset(str[i], charset))								
-		{
-			if (i == 0 || ft_check_word(str[i], str[i - 1], charset))		
-				string_tab[index] = malloc(size_stock[index] * sizeof(char));	
-			string_tab[index][j] = str[i];										
-			string_tab[index][++j] = '\0';										
-		}
-		else if (i > 0 && !ft_check_charset(str[i - 1], charset) && ++index) 
-			j = 0;
-	}
-	string_tab[ft_count_word(str, charset)] = 0;									
-	return (string_tab);															
-}
-
-int main (int argc, char **argv)
-{
-	int i;
+	array = (char **)malloc(count_word(str, charset) * sizeof(char *) + 1);
+	word = 0;
+	length[1] = 0;
 	i = 0;
-	char **tab;
-	tab = ft_split(argv[1],argv[2]);
-	while (tab[i])
+	while (str[i] != '\0')
 	{
-		printf("%s\n", tab[i]);
-		i++;
+		if (!is_in_string(str[i], charset) && word == 0)
+		{
+			word = 1;
+			length[0] = calculate_length(&str[i], charset);
+			array[length[1]] = (char *)malloc((length[0]) * sizeof(char));
+			array[length[1]] = ft_strncpy(array[length[1]], &str[i], length[0]);
+			++length[1];
+		}
+		else if (is_in_string(str[i], charset))
+			word = 0;
+		++i;
 	}
+	array[length[1]] = 0;
+	return (array);
 }

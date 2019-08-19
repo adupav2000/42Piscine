@@ -4,14 +4,14 @@
 int main()
 {
 	char *strs[6];
-	char *sepp = ";";
+	char *sepp = "\n";
 	char *ret;
 
 	strs[0] = "asdf0";
 	strs[1] = "asdf1";
 	strs[2] = "asdf2";
 	strs[3] = "asdf3";
-	strs[4] = "asd acadsdcsdcf4";
+	strs[4] = "";
 	strs[5] = "asdf5";
 	
 	ret = ft_strjoin(5, strs, sepp);
