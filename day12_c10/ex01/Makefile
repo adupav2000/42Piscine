@@ -1,11 +1,18 @@
 C_FILES = ft_cat.c
+O_FILES = ${C_FILES:.c=.o}
 NAME = ft_cat
 CC = gcc -Wall -Werror -Wextra
 
-all: 
-	${cc} ${C_FILES} -o ${NAME}
+all: sec_comp
+	${CC} ${O_FILES} -o ${NAME}
+
+sec_comp: ${C_FILES}
+	${CC}  -c ${C_FILES}
+
 clean:
 	rm -f *.o
+
 fclean: clean 
 	rm -f ft_cat
-re: clean fclean
+
+re: fclean all
