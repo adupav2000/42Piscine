@@ -6,7 +6,7 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 17:53:25 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/21 01:14:38 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/21 14:36:20 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void	ft_putnbr(long long int nb)
 	}
 }
 
-
 int main(int argc, char const *argv[])
 {
 	long long int num_1;
@@ -97,16 +96,13 @@ int main(int argc, char const *argv[])
 	num_1 = read_num((char *)argv[1]);
 	num_2 = read_num((char *)argv[3]);
 	if (num_2 == 0 && argv[2][0] == '/')
-		write(1, &"Stop : division by zero", 24);
+		write(1, &"Stop : division by zero\n", 25);
 	if (num_2 == 0 && argv[2][0] == '%')
-		write(1, &"Stop : modulo by zero", 22);
+		write(1, &"Stop : modulo by zero\n", 23);
 	if (num_2 == 0 && (argv[2][0] == '%' || argv[2][0] == '/'))
 		return (-1);
 	operator = ret_good_f_name((char *)argv[2]);
-	// int c = (*operator)(num_1, num_2);
-	// printf("%d\n", c);
 	ft_putnbr((*operator)(num_1, num_2));
-	// ft_putnbr(num_1);
-	// ft_putnbr(num_2);
+	write(1, &"\n", 1);
 	return (0);
 }
