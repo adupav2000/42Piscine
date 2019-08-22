@@ -43,15 +43,15 @@ char	*ft_strdup(char *src)
 	return (st);
 }
 
-t_list *ft_create_elem(str *data)
+t_list *ft_create_elem(char *data)
 {
 	t_list *s;
 	
-	if (!(s = malloc(sizeof(struct s_list))))
+	if (!(s = malloc(sizeof(t_list))))
 		return (NULL);
-	if(!(s->data = malloc(sizeof(data))))
+	if(!(s->str = malloc(sizeof(data))))
 		return (NULL);
-	s->data = data;
+	s->str = data;
 	s->next = 0;
 	return (s);
 }
@@ -59,14 +59,14 @@ t_list *ft_create_elem(str *data)
 t_list 	*ft_list_push_strs(int size, char **strs)
 {
 	int i;
-	t_list *begin; 
-
-
-	i = 0;
-	t_list *st_begin = st[0]; 	
-	while (i < size)
-	{
-		st[i]
-		i++;
-	}
+	t_list *begin;
+    t_list *s;
+    i = 0;
+    begin = s;
+    while (i < size)
+    {
+        s->next = ft_create_elem(strs[i]);
+        i++;
+    }
+    return (begin);
 }

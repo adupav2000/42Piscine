@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/21 15:14:41 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/22 00:32:22 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/21 14:42:03 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/21 18:18:27 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 	
 typedef struct s_list
 {
-	void	*str;
-	struct 	s_list *next;
+	void *data;
+	struct s_list *next;
 } t_list;
 
  #endif
