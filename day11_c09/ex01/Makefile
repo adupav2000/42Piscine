@@ -9,16 +9,19 @@ CC      = gcc
 RM      = rm -f
 HEADER  = includes/
 CFLAGS  = -Wall -Wextra -Werror -I$(HEADER)
-all:        ${NAME}
-.c.o:
-    ${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
-        
-${NAME}:    ${OBJS}
-    ar rc ${NAME} ${OBJS}
-    ranlib ${NAME}
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) -o $@ $^
+
+%.o: %.c
+	$(CC) -c $< -o $@ -I $(INC)
+
 clean:
-    ${RM} ${OBJS}
-fclean:     clean
-    ${RM} ${NAME}
-re:         fclean all
-.PHONY:     all clean fclean re
+	rm -f $(OBJ)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all

@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_advanced_sort_string_tab.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/20 17:23:56 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/22 14:37:25 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/22 13:58:09 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/22 14:25:59 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int	*ft_map(int *tab, int length, int (*f)(int))
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
 {
-	int i;
-	int *ret_val;
+	int		i;
+	int		s;
+	char	*change;
 
-	i = -1;
-	ret_val = (int *)malloc(sizeof(int) * length);
-	while (++i < length)
-		ret_val[i] = (*f)(tab[i]);
-	return (ret_val);
+	s = 0;
+	while (tab[s])
+	{
+		i = 0;
+		while (tab[i + 1])
+		{
+			if ((*cmp)(tab[i], tab[i + 1]) < 0)
+			{
+				change = tab[i];
+				tab[i] = tab[i + 1];
+				tab[i + 1] = change;
+			}
+			i++;
+		}
+		s++;
+	}
 }

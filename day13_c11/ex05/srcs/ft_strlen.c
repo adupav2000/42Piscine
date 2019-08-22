@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/20 17:23:56 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/22 14:37:25 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/22 14:18:23 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/22 20:10:24 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../includes/ft.h"
 
-int	*ft_map(int *tab, int length, int (*f)(int))
+int	ft_strlen(char *str)
 {
-	int i;
-	int *ret_val;
+	int	length;
 
-	i = -1;
-	ret_val = (int *)malloc(sizeof(int) * length);
-	while (++i < length)
-		ret_val[i] = (*f)(tab[i]);
-	return (ret_val);
+	length = 0;
+	while (str[length] != 0)
+		length++;
+	return (length);
 }

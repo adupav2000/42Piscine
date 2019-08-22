@@ -1,50 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   functions.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 17:53:25 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/21 14:36:20 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/22 20:07:26 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "op_functions.h"
+#include "../includes/ft.h"
 
-int	ft_strlen(char *str)
-{
-	int	length;
-
-	length = 0;
-	while (str[length] != 0)
-		length++;
-	return (length);
-}
-
-long long int read_num(char *char_num)
-{
-	long long int ret_val;
-	int i;
-	int len;
-
-	len = ft_strlen(char_num);
-	ret_val = 0;
-	i = 0;
-	while (len - i)
-		ret_val = (ret_val * 10) + ((char)char_num[i++] - 48);
-	return (ret_val);
-}
-
-long long int return_null(long long int n, long long int n2)
+int					return_null(int n, int n2)
 {
 	(void)n;
 	(void)n2;
 	return (0);
 }
 
-void *ret_good_f_name(char *operator)
+void				*ret_good_f_name(char *operator)
 {
 	if (operator[0] == '+')
 		return (&addition);
@@ -56,14 +31,14 @@ void *ret_good_f_name(char *operator)
 		return (&modulo);
 	else if (operator[0] == '*')
 		return (&multiplication);
-	else 
+	else
 		return (&return_null);
 }
 
-void	ft_putnbr(long long int nb)
+void				ft_putnbr(int nb)
 {
-	char c;
-	long long int  nb22;
+	char				c;
+	int					nb22;
 
 	nb22 = nb;
 	if (nb22 == 0)
@@ -85,16 +60,16 @@ void	ft_putnbr(long long int nb)
 	}
 }
 
-int main(int argc, char const *argv[])
+int					main(int argc, char const *argv[])
 {
-	long long int num_1;
-	long long int num_2;
-	long long int (*operator)(long long int, long long int);
+	int num_1;
+	int num_2;
+	int (*operator)(int, int);
 
 	if (argc != 4)
 		return (-1);
-	num_1 = read_num((char *)argv[1]);
-	num_2 = read_num((char *)argv[3]);
+	num_1 = ft_atoi((char *)argv[1]);
+	num_2 = ft_atoi((char *)argv[3]);
 	if (num_2 == 0 && argv[2][0] == '/')
 		write(1, &"Stop : division by zero\n", 25);
 	if (num_2 == 0 && argv[2][0] == '%')

@@ -1,27 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_any.c                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/20 17:32:30 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/22 17:28:58 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/22 13:58:49 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/22 14:02:08 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_any(char **tab, int (*f)(char*))
+#include "ft_advanced_sort_string_tab.c"
+#include <stdio.h>
+
+
+int	ft_strcmp(char *s1, char *s2)
 {
 	int i;
-	int i_1;
 
 	i = 0;
-	i_1 = 0;
-	while (tab[i])
+	while (s2[i] && s1[i])
 	{
-		if ((*f)(tab[i]))
-			return (1);
+		if ((s1[i] - s2[i]))
+		{
+			return (s1[i] - s2[i]);
+		}
 		i++;
+	}
+	return (s1[i] - s2[i]);
+}
+
+int main(int argc, char const *argv[])
+{
+	(void)argc;
+	int (*s)(char *, char *);
+	s = &ft_strcmp;
+	char **t = (char **)argv;
+	ft_advanced_sort_string_tab(t, s);
+	int i = 0;
+	while (t[i])
+	{
+		printf("%s\n", t[i++]);
 	}
 	return (0);
 }

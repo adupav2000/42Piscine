@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/20 17:23:56 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/22 14:37:25 by adu-pavi         ###   ########.fr       */
+/*   Created: 2019/08/22 13:36:47 by adu-pavi          #+#    #+#             */
+/*   Updated: 2019/08/22 13:44:46 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "ft_sort_string_tab.c"
+#include <stdio.h>
 
-int	*ft_map(int *tab, int length, int (*f)(int))
+int main(int argc, char const *argv[])
 {
-	int i;
-	int *ret_val;
+	(void)argc;
 
-	i = -1;
-	ret_val = (int *)malloc(sizeof(int) * length);
-	while (++i < length)
-		ret_val[i] = (*f)(tab[i]);
-	return (ret_val);
+	char **t = (char **)argv;
+	ft_sort_string_tab(t);
+	int i = 0;
+	while (t[i])
+	{
+		printf("%s\n", t[i++]);
+	}
+	return (0);
 }

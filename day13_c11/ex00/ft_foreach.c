@@ -6,12 +6,11 @@
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 15:04:13 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/20 17:21:48 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/22 14:27:14 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-void ft_foreach(int *tab, int length, void(*f)(int))
+void	ft_foreach(int *tab, int length, void (*f)(int))
 {
 	int i;
 

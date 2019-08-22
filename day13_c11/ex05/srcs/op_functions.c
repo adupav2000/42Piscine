@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_functions.h                                     :+:      :+:    :+:   */
+/*   op_functions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adu-pavi <adu-pavi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 23:27:16 by adu-pavi          #+#    #+#             */
-/*   Updated: 2019/08/21 00:48:54 by adu-pavi         ###   ########.fr       */
+/*   Updated: 2019/08/22 20:03:06 by adu-pavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OP_FUNCTIONS
- #define OP_FUNCTIONS
+#include "../includes/ft.h"
 
-
-long long int division(long long int num_1, long long int num_2)
+int	division(int num_1, int num_2)
 {
 	return (num_1 / num_2);
 }
 
-long long int addition(long long int num_1, long long int num_2)
+int	addition(int num_1, int num_2)
 {
 	return (num_1 + num_2);
 }
 
-long long int modulo(long long int num_1, long long int num_2)
+int	modulo(int num_1, int num_2)
 {
 	return (num_1 % num_2);
 }
 
-long long int multiplication(long long int num_1, long long int num_2)
+int	multiplication(int num_1, int num_2)
 {
 	return (num_1 * num_2);
 }
 
-long long int substraction(long long int num_1, long long int num_2)
+int	substraction(int num_1, int num_2)
 {
 	return (num_1 - num_2);
 }
-
-
- #endif 
